@@ -1,0 +1,12 @@
+id = "http"
+name = "http"
+description = "Highlights .http files"
+version = "0.0.1"
+schema_version = 1
+authors = ["tylerhanson921@gmail.com"]
+repository = "https://github.com/tie304/zed-http"
+
+
+[grammars.http]
+repository = "http://github.com/rest-nvim/tree-sitter-http"
+commit = "e061995f0caf2fa30f68fa1fdf2c08bcbd4629a8"

@@ -1,0 +1,15 @@
+[package]
+name = "zed_http"
+version = "0.1.0"
+edition = "2021"
+publish = false
+license = "Apache-2.0"
+
+
+[lib]
+path = "src/http.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+zed_extension_api = "0.0.6"

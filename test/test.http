@@ -1,0 +1,54 @@
+
+### Simple GET Request
+GET http://example.com/api/data
+Accept: application/json
+Cache-Control: no-cache
+
+###
+
+### POST Request with JSON Body
+POST http://example.com/api/users
+Content-Type: application/json
+Authorization: Bearer your_access_token_here
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com"
+}
+
+###
+
+### PUT Request with URL Parameters and Headers
+PUT http://example.com/api/users/123?active=true
+Content-Type: application/json
+X-Custom-Header: 12345
+
+{
+  "status": "active"
+}
+
+###
+
+### DELETE Request
+DELETE http://example.com/api/users/123
+Authorization: Bearer your_access_token_here
+
+###
+
+### HEAD Request
+HEAD http://example.com/api/users
+Accept: application/json
+
+###
+
+
+### PATCH Request with XML Body
+PATCH http://example.com/api/users/123
+Content-Type: application/xml
+Authorization: Bearer your_access_token_here
+
+<?xml version="1.0" encoding="UTF-8"?>
+<user>
+  <email>update@example.com</email>
+  <status>active</status>
+</user>

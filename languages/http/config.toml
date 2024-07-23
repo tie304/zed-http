@@ -1,0 +1,9 @@
+name = "http"
+grammar = "http"
+path_suffixes = ["http"]
+
+brackets = [
+    { start = "\"", end = "\"", close = true, newline = false },
+    { start = "{", end = "}", close = true, newline = false },
+    { start = "<", end = ">", close = true, newline = false },
+]
