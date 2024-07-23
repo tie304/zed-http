@@ -1,4 +1,4 @@
-# zed-http Extension for Zed Editor
+# http extension for Zed
 
 ## Overview
 The `zed-http` extension provides robust syntax highlighting for `.http` files in the Zed editor, enhancing the development and testing of HTTP requests directly within the editor. This extension aims to replicate and eventually expand upon the functionality similar to the HTTP request capabilities seen in JetBrains editors, as described [here](https://github.com/JetBrains/http-request-in-editor-spec/blob/master/spec.md).
