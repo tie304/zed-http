@@ -8,5 +8,5 @@ repository = "https://github.com/tie304/zed-http"
 
 
 [grammars.http]
-repository = "http://github.com/rest-nvim/tree-sitter-http"
+repository = "https://github.com/rest-nvim/tree-sitter-http"
 commit = "e061995f0caf2fa30f68fa1fdf2c08bcbd4629a8"
