@@ -62,7 +62,7 @@ impl HttpExtension {
         );
 
         let release = zed::latest_github_release(
-            "anthropics/zed-http",
+            "tie304/zed-http",
             zed::GithubReleaseOptions {
                 require_assets: true,
                 pre_release: false,

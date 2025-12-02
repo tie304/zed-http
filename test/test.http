@@ -52,3 +52,8 @@ Authorization: Bearer your_access_token_here
   <email>update@example.com</email>
   <status>active</status>
 </user>
+
+
+### Retrieves placeholder data
+GET https://jsonplaceholder.typicode.com/todos/1
+Accept: application/json

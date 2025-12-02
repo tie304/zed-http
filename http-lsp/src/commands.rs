@@ -1,3 +1,5 @@
+use url::Url;
+use std::path::PathBuf;
 use std::sync::Arc;
 
 use tower_lsp::jsonrpc::{Error, Result};
@@ -171,17 +173,52 @@ impl CommandHandler {
                 let response_path = format!("{}.response", uri.trim_end_matches(".http"));
                 let output = response.format_full();
 
-                self.client
-                    .show_message(
-                        MessageType::INFO,
-                        format!("Response saved to: {}\n\n{}", response_path, output),
-                    )
-                    .await;
+                // Write to file
+                match Url::parse(&response_path) {
+                    Ok(parsed) if parsed.scheme() == "file" => {
+                        if let Some(path) = parsed.to_file_path().ok() {
+                            match std::fs::write(&path, &output) {
+                                Ok(_) => {
+                                    self.client
+                                        .show_message(
+                                            MessageType::INFO,
+                                            format!("Response saved to: {}\n\n{}", path.display(), output),
+                                        )
+                                        .await;
 
-                Ok(Some(serde_json::json!({
-                    "saved_to": response_path,
-                    "status": response.status
-                })))
+                                    return Ok(Some(serde_json::json!({
+                                        "saved_to": path.display().to_string(),
+                                        "status": response.status
+                                    })));
+                                },
+                                Err(e) => {
+                                    self.client
+                                        .show_message(MessageType::ERROR, format!("Failed to save response: {}\n{}", e, path.display()))
+                                        .await;
+                                    return Err(Error::internal_error());
+                                }
+                            }
+                        } else {
+                            self.client
+                                .show_message(MessageType::ERROR, format!("Invalid file path: {}", response_path))
+                                .await;
+                            return Err(Error::invalid_params("Invalid file path"));
+                        }
+                    }
+                    Ok(_) => {
+                        self.client
+                            .show_message(MessageType::ERROR, format!("Unsupported URL scheme for saving response: {}", response_path))
+                            .await;
+                        return Err(Error::invalid_params("Unsupported URL scheme"));
+                    }
+                    Err(e) => {
+                        self.client
+                            .show_message(MessageType::ERROR, format!("Failed to parse file URL: {}", e))
+                            .await;
+                        return Err(Error::invalid_params("Invalid file URL"));
+                    }
+                };
+
             }
             Err(e) => {
                 self.client

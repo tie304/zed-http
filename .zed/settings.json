@@ -1,0 +1,16 @@
+{
+  "languages": {
+    "http": {
+      "inlay_hints": {
+        "enabled": true
+      }
+    }
+  },
+  "lsp": {
+    "http-lsp": {
+      "binary": {
+        "path": "/home/rakib/Code/rust/zed-http/target/release/http-lsp"
+      }
+    }
+  }
+}
