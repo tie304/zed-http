@@ -1,11 +1,14 @@
 id = "http"
 name = "http"
-description = "Highlights .http files"
-version = "0.0.1"
+description = "HTTP client for .http files with Send/Show/Save buttons"
+version = "0.0.2"
 schema_version = 1
 authors = ["tylerhanson921@gmail.com"]
 repository = "https://github.com/tie304/zed-http"
 
+[language_servers.http-lsp]
+name = "HTTP LSP"
+languages = ["http"]
 
 [grammars.http]
 repository = "https://github.com/rest-nvim/tree-sitter-http"

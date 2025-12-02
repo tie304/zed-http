@@ -104,7 +104,7 @@ pub fn extract_request_at_line(source: &str, line: u32) -> Option<FullHttpReques
 fn extract_full_request(source: &str, req: &HttpRequest) -> Option<FullHttpRequest> {
     let lines: Vec<&str> = source.lines().collect();
     let start = req.start_line as usize;
-    let end = (req.end_line as usize).min(lines.len());
+    let end = (req.end_line as usize + 1).min(lines.len());
 
     if start >= lines.len() {
         return None;
@@ -114,7 +114,7 @@ fn extract_full_request(source: &str, req: &HttpRequest) -> Option<FullHttpReque
     let mut body_lines = Vec::new();
     let mut in_body = false;
 
-    for (i, line) in lines[start..=end].iter().enumerate() {
+    for (i, line) in lines[start..end].iter().enumerate() {
         if i == 0 {
             // Skip the request line (METHOD URL)
             continue;

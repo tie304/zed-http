@@ -42,12 +42,12 @@ impl CodeLensProvider {
                 data: None,
             });
 
-            // Show Headers button
+            // Show Response button (cached)
             lenses.push(CodeLens {
                 range,
                 command: Some(Command {
-                    title: "◉ Headers".to_string(),
-                    command: "http.showHeaders".to_string(),
+                    title: "👁 Show".to_string(),
+                    command: "http.show".to_string(),
                     arguments: Some(vec![
                         serde_json::json!(uri),
                         serde_json::json!(req.start_line),
@@ -62,6 +62,20 @@ impl CodeLensProvider {
                 command: Some(Command {
                     title: "💾 Save".to_string(),
                     command: "http.saveResponse".to_string(),
+                    arguments: Some(vec![
+                        serde_json::json!(uri),
+                        serde_json::json!(req.start_line),
+                    ]),
+                }),
+                data: None,
+            });
+
+            // Show Headers button
+            lenses.push(CodeLens {
+                range,
+                command: Some(Command {
+                    title: "◉ Headers".to_string(),
+                    command: "http.showHeaders".to_string(),
                     arguments: Some(vec![
                         serde_json::json!(uri),
                         serde_json::json!(req.start_line),
