@@ -43,7 +43,7 @@ Accept: application/json
 
 
 ### PATCH Request with XML Body
-PATCH http://example.com/api/users/123
+PATCH http://example.com/api/users/{{user_id}}
 Content-Type: application/xml
 Authorization: Bearer your_access_token_here
 
@@ -52,3 +52,12 @@ Authorization: Bearer your_access_token_here
   <email>update@example.com</email>
   <status>active</status>
 </user>
+
+
+###
+# variables
+
+@user_id=123
+@number_variable=456
+@string_variable="fooBar"
+@boolean_variable=false

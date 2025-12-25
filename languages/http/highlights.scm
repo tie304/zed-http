@@ -20,7 +20,17 @@
 ; Highlight HTTP versions
 (http_version) @keyword
 
-; Highlight variables and script variables
+; Highlight variable declarations (@foo=bar)
+(variable_declaration
+  name: (identifier) @variable)
+(variable_declaration
+  value: (string) @string)
+(variable_declaration
+  value: (number) @number)
+(variable_declaration
+  value: (boolean) @boolean)
+
+; Highlight variables and script variables ({{foo}})
 (variable) @variable
 (script_variable) @variable.special
 
