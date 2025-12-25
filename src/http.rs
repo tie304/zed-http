@@ -13,7 +13,7 @@ impl zed::Extension for HttpExtension {
         _: &zed_extension_api::LanguageServerId,
         _: &zed_extension_api::Worktree,
     ) -> zed_extension_api::Result<zed_extension_api::Command> {
-        Err(("Not implmented").into())
+        Err(("Not implemented").into())
     }
 }
 
